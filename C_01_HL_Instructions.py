@@ -35,13 +35,9 @@ print("📚✖️➕➗🔢Welcome to the Math quiz⬇📚✖️➕➗🔢 ")
 print()
 
 # loop for testing purposes
-while True:
 
-    want_instructions = yes_no("Do you want to read the instructions? ")
+want_instructions = yes_no("Do you want to read the instructions? ")
 
     # checks users enter yes (y) or no (n)
-    if want_instructions == "yes":
-        print("yes")
-    else:
-        print("no")
-
+if want_instructions == "yes":
+    print(instructions)

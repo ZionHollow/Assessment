@@ -1,7 +1,7 @@
 
 
 
-def int_check(question, low=None, high=None, exit_code=None, infinite=""):
+def int_check(question, exit_code=None, infinite=""):
 
     while True:
         response = input(question).lower()
@@ -23,12 +23,13 @@ def int_check(question, low=None, high=None, exit_code=None, infinite=""):
             response = int(response)
 
             # Check the integer is not too low...
-            if low is not None and response < low:
+            if response < 1:
                 print(error)
 
             # check response is more than the low number
-            elif high is not None and response > high:
-                print(error)
+
+
+
 
             # if response is valid, return it
             else:
@@ -40,7 +41,7 @@ def int_check(question, low=None, high=None, exit_code=None, infinite=""):
 
 # Main Routine goes here
 
-
+while True:
     rounds = int_check("Rounds <enter> for infinite>: ", low=1)
     if rounds == "":
         print("You asked for infinite mode")
