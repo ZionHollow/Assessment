@@ -1,7 +1,7 @@
 
 
 
-def int_check(question, exit_code=None, infinite=""):
+def int_check(question, low=None, high=None, exit_code=None, infinite=""):
 
     while True:
         response = input(question).lower()
@@ -17,19 +17,18 @@ def int_check(question, exit_code=None, infinite=""):
                      "more than / equals to 1")
 
         elif response != int:
-            error = ("Please enter an integer")
+            error = "Please enter an integer"
 
         try:
             response = int(response)
 
             # Check the integer is not too low...
-            if response < 1:
+            if low is not None and response < low:
                 print(error)
 
             # check response is more than the low number
-
-
-
+            elif high is not None and response > high:
+                print(error)
 
             # if response is valid, return it
             else:

@@ -30,7 +30,7 @@ Good luck.
 
     """)
 
-def int_check(question, low=None, high=None, exit_code=None, infinite=""):
+def int_check(question, low=None, exit_code=None, infinite=""):
 
     while True:
         response = input(question).lower()
@@ -55,34 +55,16 @@ def int_check(question, low=None, high=None, exit_code=None, infinite=""):
             if low is not None and response < low:
                 print(error)
 
-            # check response is more than the low number
-            elif high is not None and response > high:
-                print(error)
-
             # if response is valid, return it
             else:
                 return response
 
         except ValueError:
             print(error)
-def ans_check(question, exit_code = "xxx"):
-
-    # checks if the response is the exit code
-    while True:
-        response = input(question).lower()
-        if response == exit_code:
-            return response
-        # checks if the response is an integer
-        try:
-            integer = float(response)
-            return integer
-
-        except ValueError:
-            print("Please enter an integer")
 
 # variables
 
-operator_list = "+", "-", "*", "/"
+operator_list = "+", "-", "*"
 questions_answered = 0
 mode = "regular"
 quiz_history = []
@@ -130,14 +112,13 @@ while total_questions > questions_answered:
         answer = num1 - num2
     elif operator == "*":
         answer = num1 * num2
-    else:
-        answer = num1 / num2
+
     # Rounds answer to the nearest integer
-    answer = round(answer,2)
+    answer = round(answer)
     print(answer)
 
     # generates question
-    response = ans_check(f"{num1} {operator} {num2} =")
+    response = int_check(f"{num1} {operator} {num2} =", exit_code="xxx")
 
     # checks if user ends the quiz
     if response == "xxx":
@@ -146,7 +127,7 @@ while total_questions > questions_answered:
 
 
     # total_questions the response
-    response = round(response, 2)
+    response = round(response)
     # shows the user if the answer is correct or Incorrect
     if response == answer:
         feedback = "correct"
@@ -176,7 +157,8 @@ if questions_answered > 0:
 
     want_history = yes_no("Do you want to see quiz history")
     if want_history == "yes":
-        print(quiz_history)
+        for item in quiz_history:
+            print(item)
 
 
 
